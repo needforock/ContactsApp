@@ -83,8 +83,10 @@ public class AddContactFragment extends Fragment {
                     Snackbar.make(v, "Debes Ingresar informacion", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }else if (emailCb.isChecked()&& emailET.getText().toString().equals("")) {
                     Snackbar.make(v, "Debes Ingresar Correo", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                } else if (id==-1){
+                } else if (id==-1) {
                     Snackbar.make(v, "Debes Seleccionar Grupo", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                } else if(nameET.getText().toString().equals("") && phoneET.getText().toString().equals("")){
+                    Snackbar.make(v, "Debes Ingresar informacion", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }else {
                     startActivity(intent);
                 }
