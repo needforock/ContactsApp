@@ -67,47 +67,53 @@ public class AddContactFragment extends Fragment {
 
                 int id = groupRg.getCheckedRadioButtonId();
 
-                if (id!=-1){
+                if (id != -1) {
                     RadioButton radioButton = (RadioButton) groupRg.findViewById(id);
                     String answer = radioButton.getText().toString();
-                    group.putString("GROUP",answer);
-                }else{
-                    group.putString("GROUP","Sin Grupo");
+                    group.putString("GROUP", answer);
+                } else {
+                    group.putString("GROUP", "Sin Grupo");
                 }
 
                 intent.putExtras(group);
                 intent.putExtras(name);
                 intent.putExtras(phone);
                 intent.putExtras(email);
-                if(nameET.getText().toString().equals("") && phoneET.getText().toString().equals("") && emailET.getText().toString().equals("")&&id==-1) {
-                    Snackbar.make(v, "Debes Ingresar informacion", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                }else if (emailCb.isChecked()&& emailET.getText().toString().equals("")) {
+                if (nameET.getText().toString().equals("") && phoneET.getText().toString().equals("") && emailET.getText().toString().equals("") && id == -1) {
+                    Snackbar.make(v, "Debes Ingresar Nombre, Telefono y Correo", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                } else if (emailCb.isChecked() && emailET.getText().toString().equals("")) {
                     Snackbar.make(v, "Debes Ingresar Correo", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                } else if (id==-1) {
+                } else if (nameET.getText().toString().equals("")) {
+                    Snackbar.make(v, "Debes Ingresar Nombre", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                } else if (phoneET.getText().toString().equals("")) {
+                    Snackbar.make(v, "Debes Ingresar Teléfono", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                } else if (id == -1) {
                     Snackbar.make(v, "Debes Seleccionar Grupo", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                } else if(nameET.getText().toString().equals("") && phoneET.getText().toString().equals("")){
+                } else if (nameET.getText().toString().equals("") && phoneET.getText().toString().equals("")) {
                     Snackbar.make(v, "Debes Ingresar informacion", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-                }else {
+                } else {
                     startActivity(intent);
                 }
+
+
             }
         });
 
 
-       emailCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-           @Override
-           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-               if (isChecked){
-                   emailET.setVisibility(View.VISIBLE);
-                   emailTv.setVisibility(View.VISIBLE);
-               }else{
-                   emailET.setVisibility(View.GONE);
-                   emailTv.setVisibility(View.GONE);
-                   emailET.setText("");
-               }
+        emailCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    emailET.setVisibility(View.VISIBLE);
+                    emailTv.setVisibility(View.VISIBLE);
+                } else {
+                    emailET.setVisibility(View.GONE);
+                    emailTv.setVisibility(View.GONE);
+                    emailET.setText("");
+                }
 
-           }
-       });
+            }
+        });
 
     }
 
