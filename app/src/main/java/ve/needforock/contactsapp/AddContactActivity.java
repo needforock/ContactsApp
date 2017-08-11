@@ -34,4 +34,7 @@ public class AddContactActivity extends AppCompatActivity {
 
         group.setText(bundle.getString("GROUP"));
     }
+
+
+
 }
